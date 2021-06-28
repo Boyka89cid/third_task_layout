@@ -25,17 +25,17 @@ class Home extends StatelessWidget
               Container(
                 margin:EdgeInsets.all(15.0),
                 child: Image(image: AssetImage('images/my_photo.jpg'), width: 60.0, height: 60.0),
-                color: Colors.red
+                //color: Colors.red
               ),
               Container(
                 margin:EdgeInsets.all(15.0),
                 child: Text("Lawyers",style: TextStyle(fontSize: 25.0, color: Colors.grey[600])),
-                  color: Colors.blue
+                  //color: Colors.blue
               ),
               Container(
                   margin:EdgeInsets.all(15.0),
                 child: Icon(Icons.image_search_outlined, color: Colors.grey[600], size: 50.0),
-                  color: Colors.green
+                  //color: Colors.green
               )
             ],
           ),
@@ -68,5 +68,4 @@ class Home extends StatelessWidget
       ),
     );
   }
-
 }
