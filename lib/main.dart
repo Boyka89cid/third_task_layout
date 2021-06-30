@@ -27,7 +27,7 @@ class Home extends StatelessWidget
         Row Widget -> three Containers   | for UpperBar containing image,text,Button
         Row Widget-> two Expanded Widgets //for Selection between History and Lawyers.
         Container  // for the half page underline.
-        Row Widget -> two Containers // for total searches found and button ar end.
+        Row Widget -> two Containers // for total searches found and button at end.
         Container // for list Builder.
        */
       body: Column(
