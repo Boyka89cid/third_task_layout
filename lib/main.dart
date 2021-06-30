@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 
 void main()
 {
-  runApp(MaterialApp(
-    home: Home()
-  ));
+  runApp(MaterialApp(home: Home()));
 }
-
 class Home extends StatelessWidget
 {
   final List<String> imageURL=['images/my_photo.jpg','images/my_photo.jpg','images/my_photo.jpg','images/my_photo.jpg','images/my_photo.jpg'];
@@ -19,23 +16,32 @@ class Home extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
+    //var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Text('Layout')),
       body: Column(
-        //mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
+                width: 60.0,
+                height: 60.0,
+                decoration: BoxDecoration(
+                 shape: BoxShape.circle, image:DecorationImage(
+                  image: AssetImage('images/my_photo.jpg'),fit: BoxFit.fill
+                ),
+                ),
                 margin:EdgeInsets.all(15.0),
-                child: Image(image: AssetImage('images/my_photo.jpg'), width: 60.0, height: 60.0),
                 //color: Colors.red
               ),
               Container(
-                margin:EdgeInsets.all(15.0),
-                child: Text("Lawyers",style: TextStyle(fontSize: 25.0, color: Colors.grey[600])),
+                padding: EdgeInsets.only(top: 30.0),
+                child: Text("Lawyers",style: TextStyle(fontSize: 20.0, color: Colors.grey[600])),
                   //color: Colors.blue
               ),
               Container(
@@ -48,19 +54,22 @@ class Home extends StatelessWidget
           Row(
             children: <Widget>[
               Expanded(
-                child: TextButton(onPressed: () {}, child: Text("Lawyer",style: TextStyle(color: Colors.black, fontSize: 35.0)))
+                child: TextButton(onPressed: () {}, child: Text("Lawyer",style: TextStyle(color: Colors.black, fontSize: 24.0)))
               ),
               Expanded(
-                child: TextButton(onPressed: () {},child: Text("History",style: TextStyle(color: Colors.black, fontSize: 35.0),),)
+                child: TextButton(onPressed: () {},child: Text("History",style: TextStyle(color: Colors.black, fontSize: 24.0),),)
               )
             ],
+          ),
+          Container(
+              width: (MediaQuery.of(context).size.width)*0.5, color: Colors.green[500], height: 4.0
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text("20 Results Found", style: TextStyle(fontSize: 15.0, color: Colors.black))
+                child: Text("20 Results Found", style: TextStyle(fontSize: 12.0, color: Colors.black))
               ),
               Container(
                 padding: EdgeInsets.all(10.0),
@@ -70,67 +79,92 @@ class Home extends StatelessWidget
               )
             ],
           ),
-            ListView.builder(
-           padding: const EdgeInsets.all(5.0),
-           itemCount: 1,
-           //sof
-           itemBuilder: (BuildContext context, int index)
-           {
-             return Row(
-               children: <Widget>[
-                 Column(
-                   children: <Widget>[
-                     Container(
-                       child: Image(image: AssetImage(imageURL[0]), width: 50, height: 50)
-                     )
-                   ],
-                 ),
-                 Column(
-                   children: <Widget>[
-                     Row(
-                       children: <Widget>[
-                         Container(
-                           child: Text('${listOfLawyers[0]}',style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black))
-                         )
-                       ],
-                     ),
-                     Row(
-                       children: <Widget>[
-                         Container(
-                           child: Text('${typeOfWork[0]}',style: TextStyle(fontSize: 15.0, color: Colors.green[300]))
-                         )
-                       ],
-                     ),
-                     Row(
-                       children: <Widget>[
-                         Container(
-                             child: Text('${ageOfLawyers[0]}',style: TextStyle(fontSize: 15.0, color: Colors.green[300])),
-                             color: Colors.grey[300]
-                         ),
-                         Container(
-                             child: Text('${moneyPerWorkDne[0]}',style: TextStyle(fontSize: 15.0, color: Colors.green[300])),
-                             color: Colors.grey[300]
-                         )
-                       ],
-                     ),
-                     Row(
-                       children: <Widget>[
-                         Container(
-                           child: TextButton(
-                             onPressed: (){}, child: Text('Consult'),
-                           ), color: Colors.green[600],
-                         ),
-                         Container(
-                           child: Image(image: AssetImage('images/user_ratings.png'), width: 100, height: 30)
-                         )
-                       ],
-                     )
-                   ],
-                 )
-               ],
-             );
-           }
-         )
+            Container(
+              height: (MediaQuery.of(context).size.height)*0.5,
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(5.0),
+                    itemCount: listOfLawyers.length,
+                    itemBuilder: (BuildContext context, int index)
+                    {
+                      return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0, top: 0.0, right: 10.0,bottom: 0.0),
+                                width: 50.0,
+                                height: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle, image:DecorationImage(
+                                    image: AssetImage('images/my_photo.jpg'),fit: BoxFit.fill
+                                ),
+                                ),
+                              ),
+                              Container(
+                                width: 80.0,
+                                height: 80.0
+                              )
+                            ],
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                  margin: EdgeInsets.only(bottom: 7.0),
+                                  child: Text('${listOfLawyers[index]}',style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black))
+                              ),
+                              Container(
+                                  margin: EdgeInsets.only(bottom: 7.0),
+                                  child: Text('${typeOfWork[index]}',style: TextStyle(fontSize: 12.0, color: Colors.green[300]))
+                              ),
+                              Container(
+                                  padding: EdgeInsets.only(bottom: 7.0, left: 5.0,top:7.0),
+                                  width: width*0.75,
+                                  height: 30.0,
+                                  color:Colors.grey[300],
+                                    child: Text('${ageOfLawyers[index]} | ${moneyPerWorkDne[index]}',style: TextStyle(fontSize: 12.0, color: Colors.black))
+                                ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                      margin: EdgeInsets.only(top:7.0,bottom: 15.0),
+                                      width: 90.0,
+                                      height: 30.0,
+                                      decoration: BoxDecoration(
+                                        color:Colors.green[400], borderRadius: BorderRadius.all(Radius.circular(20))
+                                      ),
+                                      child: Center(
+                                        child: Text('Consult', style: TextStyle(color: Colors.black), textAlign: TextAlign.center),
+                                      )
+                                  ),
+                                  /*Container(
+                                    child:  ButtonTheme(
+                                      minWidth: 20.0,
+                                      height: 20.0,
+                                      child: TextButton(onPressed: () {}, child: Text('Consult', style: TextStyle(color: Colors.black),)),
+                                      buttonColor:Colors.green[500],
+                                      shape: new RoundedRectangleBorder( borderRadius: new BorderRadius.circular(20.0))
+                                    )
+                                  )*/
+                                  Container(
+                                      child: Image(image: AssetImage('images/user_ratings.png'), width: 100, height: 30)
+                                  )
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      );
+                    }
+                )
+            )
         ],
       ),
     );
