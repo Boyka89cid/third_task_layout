@@ -143,6 +143,7 @@ class Home extends StatelessWidget
                                         child: Text('Consult', style: TextStyle(color: Colors.black), textAlign: TextAlign.center),
                                       )
                                   ),
+                                  Container(width: 130.0),
                                   /*Container(
                                     child:  ButtonTheme(
                                       minWidth: 20.0,
