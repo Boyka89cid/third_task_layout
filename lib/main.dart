@@ -184,15 +184,6 @@ class Home extends StatelessWidget
                                   ),
                                   // Space Between Container
                                   Container(width: 130.0),
-                                  /*Container(
-                                    child:  ButtonTheme(
-                                      minWidth: 20.0,
-                                      height: 20.0,
-                                      child: TextButton(onPressed: () {}, child: Text('Consult', style: TextStyle(color: Colors.black),)),
-                                      buttonColor:Colors.green[500],
-                                      shape: new RoundedRectangleBorder( borderRadius: new BorderRadius.circular(20.0))
-                                    )
-                                  )*/
                                   // Rating Container.
                                   Container(
                                       child: Image(image: AssetImage('images/user_ratings.png'), width: 100, height: 30)
